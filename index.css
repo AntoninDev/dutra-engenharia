@@ -540,12 +540,38 @@ body.no-scroll {
   line-height: 1.2;
 }
 
+.instagram-float {
+  position: fixed;
+  bottom: 87px;
+  right: 20px;
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.instagram-float:hover {
+  background: var(--brand-hover);
+  transform: scale(1.08);
+}
+.instagram-float img {
+  width: 55px;
+  display: block;
+}
+
 /* whatsapp */
 .whatsapp-float {
   position: fixed;
   bottom: 17px;
   right: 20px;
-  background: var(--brand);
+  background: rgb(37, 211, 102);
   width: 55px;
   height: 55px;
   border-radius: 50%;
