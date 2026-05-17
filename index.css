@@ -185,21 +185,8 @@ body.no-scroll {
 }
 
 /* ===== TEXTO PRINCIPAL ===== */
-.div-texto-principal {
-  width: 92%;
-  max-width: 980px;
-  margin: 14px auto 8px;
-}
-.texto-principal {
-  font-size: clamp(28px, 4vw, 36px);
-  line-height: 1.12;
-  white-space: pre-line;
-}
-.sub-texto-principal {
-  font-size: 16px;
-  color: var(--cinza);
-  margin-top: 10px;
-}
+
+
 .ig-btn__icon img {
   width: 18px;
   height: 18px;
@@ -819,5 +806,421 @@ body.no-scroll {
   .destaques,
   .portfolio {
     max-width: 1180px;
+  }
+}
+
+/* ===== SOBRE ===== */
+
+.sobre{
+  width:100%;
+  padding:120px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.sobre-container{
+  width:100%;
+  max-width:1200px;
+}
+
+.sobre-header{
+  margin-bottom:60px;
+
+}
+
+.sobre-tag{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.08);
+  font-size:.8rem;
+  letter-spacing:2px;
+  margin-bottom:20px;
+  color:#bdbdbd;
+}
+
+.sobre-header h2{
+  font-size:clamp(2.2rem,5vw,4.5rem);
+  line-height:1;
+  margin-bottom:20px;
+  color:#fff;
+}
+
+.sobre-line{
+  width:120px;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#00bfff,#0066ff);
+}
+
+.sobre-content{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:start;
+}
+
+.sobre-texto{
+  padding:40px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(10px);
+}
+
+.sobre-texto p{
+  font-size:1.1rem;
+  line-height:1.9;
+  color:#d8d8d8;
+}
+
+.sobre-cards{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.sobre-card{
+  padding:30px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  transition:.3s;
+}
+
+.sobre-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(0,191,255,.4);
+}
+
+.sobre-card h3{
+  font-size:1rem;
+  letter-spacing:2px;
+  margin-bottom:15px;
+  color:#00bfff;
+}
+
+.sobre-card p{
+  color:#d0d0d0;
+  line-height:1.7;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:900px){
+
+  .sobre-header h2{
+    font-size:2rem;
+  }
+  .sobre{
+    padding:90px 18px;
+  }
+
+  .sobre-content{
+    grid-template-columns:1fr;
+  }
+
+  .sobre-texto{
+    padding:28px;
+  }
+
+  .sobre-texto p{
+    font-size:1rem;
+    line-height:1.8;
+  }
+
+  .sobre-card{
+    padding:24px;
+  }
+
+  .sobre-header{
+    margin-bottom:40px;
+  }
+}
+
+/* ===== FINANCIAMENTO ===== */
+
+.financiamento{
+  width:100%;
+  padding:110px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.financiamento-container{
+  width:100%;
+  max-width:1200px;
+
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:60px;
+  align-items:center;
+
+  padding:50px;
+
+  border-radius:30px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+
+  border:1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(12px);
+}
+
+.financiamento-logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+ 
+}
+
+.financiamento-logo img{
+  width:100%;
+  max-width:300px;
+  object-fit:contain;
+  border-radius: 8px;
+  filter:
+  drop-shadow(0 0 30px rgba(0,98,255,.18));
+}
+
+.financiamento-content{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.financiamento-tag{
+  width:fit-content;
+
+  padding:8px 16px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:#d4d4d4;
+
+  font-size:.8rem;
+  letter-spacing:2px;
+}
+
+.financiamento-content h2{
+  font-size:clamp(2rem,4vw,4rem);
+  line-height:1.05;
+
+  color:#fff;
+
+  max-width:700px;
+}
+
+.financiamento-content p{
+  color:#cfcfcf;
+
+  font-size:1.05rem;
+  line-height:1.9;
+
+  max-width:700px;
+}
+
+.financiamento-btn{
+  width:fit-content;
+
+  margin-top:10px;
+
+  padding:14px 22px;
+
+  border-radius:14px;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  background:
+  linear-gradient(
+    135deg,
+    #005ca9,
+    #0074d9
+  );
+
+  color:#fff;
+
+  transition:.3s;
+}
+
+.financiamento-btn:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.08);
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:900px){
+
+  .financiamento{
+    padding:90px 18px;
+  }
+
+  .financiamento-container{
+    grid-template-columns:1fr;
+    gap:40px;
+
+    padding:35px 25px;
+  }
+
+  .financiamento-logo img{
+    max-width:220px;
+  }
+
+  .financiamento-content h2{
+    font-size:2.2rem;
+  }
+
+  .financiamento-content p{
+    font-size:1rem;
+    line-height:1.8;
+  }
+}
+
+/* ===== DESCRIÇÃO ===== */
+
+.financiamento-desc{
+  color:#cfcfcf;
+  line-height:1.9;
+  font-size:1.05rem;
+}
+
+/* ===== BENEFÍCIOS ===== */
+
+.financiamento-beneficios{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:10px;
+}
+
+.beneficio-card{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+
+  padding:18px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.beneficio-card span{
+  color:#00bfff;
+  font-size:1.2rem;
+  font-weight:700;
+}
+
+.beneficio-card p{
+  color:#e0e0e0;
+  line-height:1.6;
+}
+
+/* ===== FASES ===== */
+
+.fases-wrapper{
+  margin-top:40px;
+
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.fases-title{
+  font-size:1.5rem;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.fase-card{
+  display:flex;
+  gap:20px;
+
+  padding:22px;
+
+  border-radius:22px;
+
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(255,255,255,0.06);
+
+  transition:.3s;
+}
+
+.fase-card:hover{
+  transform:translateY(-3px);
+
+  border-color:rgba(0,191,255,.25);
+}
+
+.fase-num{
+  min-width:52px;
+  height:52px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(
+    135deg,
+    #005ca9,
+    #0074d9
+  );
+
+  color:#fff;
+
+  font-weight:700;
+  font-size:1.1rem;
+}
+
+.fase-content h4{
+  margin-bottom:8px;
+
+  color:#fff;
+
+  font-size:1.05rem;
+}
+
+.fase-content p{
+  color:#cfcfcf;
+
+  line-height:1.8;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:900px){
+
+  .financiamento-beneficios{
+    grid-template-columns:1fr;
+  }
+
+  .fase-card{
+    padding:18px;
+    gap:16px;
+  }
+
+  .fase-num{
+    min-width:44px;
+    height:44px;
+
+    font-size:1rem;
   }
 }
