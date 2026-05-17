@@ -519,12 +519,17 @@ body.no-scroll {
   border-top: 1px solid var(--cinza-borda);
 }
 .bottom-strip p {
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
+  width: calc(100% - 110px);
+
+  max-width: 780px;
+
+  margin: 0 auto 0 20px;
+
   font-family: "FonteTitulos", Arial, sans-serif;
+
   font-size: 20px;
-  line-height: 1.2;
+
+  line-height: 1.4;
 }
 
 .instagram-float {
@@ -552,6 +557,7 @@ body.no-scroll {
   width: 55px;
   display: block;
 }
+
 
 /* whatsapp */
 .whatsapp-float {
@@ -669,6 +675,13 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
+  .bottom-strip p{
+    width: calc(100% - 95px);
+
+    font-size: 16px;
+
+    line-height: 1.5;
+  }
   .sidebar {
     width: 300px;
     padding-top: 60px;
@@ -725,6 +738,7 @@ body.no-scroll {
 
 /* PC */
 @media (min-width: 1024px) {
+  
   :root {
     --radius: 16px;
   }
@@ -938,31 +952,20 @@ body.no-scroll {
     margin-bottom:40px;
   }
 }
-
 /* ===== FINANCIAMENTO ===== */
 
 .financiamento{
   width:100%;
-  padding:110px 20px;
-  display:flex;
-  justify-content:center;
+  padding:100px 20px;
 }
 
 .financiamento-container{
   width:100%;
   max-width:1200px;
 
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:60px;
-  align-items:center;
+  margin:0 auto;
 
-  padding:50px;
-
-  border-radius:30px;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     145deg,
     rgba(255,255,255,0.04),
     rgba(255,255,255,0.02)
@@ -970,29 +973,29 @@ body.no-scroll {
 
   border:1px solid rgba(255,255,255,0.06);
 
+  border-radius:32px;
+
+  padding:50px;
+
   backdrop-filter:blur(12px);
 }
 
-.financiamento-logo{
-  display:flex;
-  justify-content:center;
-  align-items:center;
- 
-}
-
-.financiamento-logo img{
-  width:100%;
-  max-width:300px;
-  object-fit:contain;
-  border-radius: 8px;
-  filter:
-  drop-shadow(0 0 30px rgba(0,98,255,.18));
-}
-
 .financiamento-content{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:60px;
+
+  align-items:start;
+}
+
+/* COLUNA ESQUERDA */
+
+.financiamento-left{
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:24px;
 }
 
 .financiamento-tag{
@@ -1006,114 +1009,63 @@ body.no-scroll {
 
   border:1px solid rgba(255,255,255,0.08);
 
-  color:#d4d4d4;
-
   font-size:.8rem;
+
   letter-spacing:2px;
+
+  color:#d4d4d4;
 }
 
-.financiamento-content h2{
-  font-size:clamp(2rem,4vw,4rem);
+.financiamento-logo{
+  display:flex;
+  align-items:center;
+}
+
+.financiamento-logo img{
+  width:100%;
+  max-width:260px;
+
+  object-fit:contain;
+
+  filter:drop-shadow(
+    0 0 25px rgba(0,98,255,.2)
+  );
+}
+
+.financiamento-left h2{
+  font-size:clamp(2.2rem,4vw,4rem);
+
   line-height:1.05;
 
   color:#fff;
-
-  max-width:700px;
 }
-
-.financiamento-content p{
-  color:#cfcfcf;
-
-  font-size:1.05rem;
-  line-height:1.9;
-
-  max-width:700px;
-}
-
-.financiamento-btn{
-  width:fit-content;
-
-  margin-top:10px;
-
-  padding:14px 22px;
-
-  border-radius:14px;
-
-  text-decoration:none;
-
-  font-weight:700;
-
-  background:
-  linear-gradient(
-    135deg,
-    #005ca9,
-    #0074d9
-  );
-
-  color:#fff;
-
-  transition:.3s;
-}
-
-.financiamento-btn:hover{
-  transform:translateY(-3px);
-  filter:brightness(1.08);
-}
-
-/* ===== RESPONSIVO ===== */
-
-@media (max-width:900px){
-
-  .financiamento{
-    padding:90px 18px;
-  }
-
-  .financiamento-container{
-    grid-template-columns:1fr;
-    gap:40px;
-
-    padding:35px 25px;
-  }
-
-  .financiamento-logo img{
-    max-width:220px;
-  }
-
-  .financiamento-content h2{
-    font-size:2.2rem;
-  }
-
-  .financiamento-content p{
-    font-size:1rem;
-    line-height:1.8;
-  }
-}
-
-/* ===== DESCRIÇÃO ===== */
 
 .financiamento-desc{
   color:#cfcfcf;
-  line-height:1.9;
+
   font-size:1.05rem;
+
+  line-height:1.9;
 }
 
-/* ===== BENEFÍCIOS ===== */
+/* BENEFÍCIOS */
 
 .financiamento-beneficios{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:1fr 1fr;
+
   gap:18px;
-  margin-top:10px;
 }
 
 .beneficio-card{
   display:flex;
+
   gap:14px;
-  align-items:flex-start;
 
-  padding:18px;
+  padding:20px;
 
-  border-radius:18px;
+  border-radius:20px;
 
   background:rgba(255,255,255,0.03);
 
@@ -1122,34 +1074,38 @@ body.no-scroll {
 
 .beneficio-card span{
   color:#00bfff;
-  font-size:1.2rem;
+
   font-weight:700;
 }
 
 .beneficio-card p{
+  line-height:1.7;
+
   color:#e0e0e0;
-  line-height:1.6;
 }
 
-/* ===== FASES ===== */
+/* DIREITA */
 
 .fases-wrapper{
-  margin-top:40px;
-
   display:flex;
+
   flex-direction:column;
+
   gap:18px;
 }
 
 .fases-title{
   font-size:1.5rem;
-  margin-bottom:8px;
+
   color:#fff;
+
+  margin-bottom:10px;
 }
 
 .fase-card{
   display:flex;
-  gap:20px;
+
+  gap:18px;
 
   padding:22px;
 
@@ -1187,40 +1143,61 @@ body.no-scroll {
   color:#fff;
 
   font-weight:700;
-  font-size:1.1rem;
 }
 
 .fase-content h4{
   margin-bottom:8px;
 
   color:#fff;
-
-  font-size:1.05rem;
 }
 
 .fase-content p{
   color:#cfcfcf;
 
-  line-height:1.8;
+  line-height:1.7;
 }
 
 /* ===== RESPONSIVO ===== */
 
-@media (max-width:900px){
+@media (max-width:1024px){
+
+  .financiamento-content{
+    grid-template-columns:1fr;
+
+    gap:50px;
+  }
 
   .financiamento-beneficios{
     grid-template-columns:1fr;
   }
+}
+
+@media (max-width:768px){
+
+  .financiamento{
+    padding:80px 16px;
+  }
+
+  .financiamento-container{
+    padding:30px 22px;
+
+    border-radius:24px;
+  }
+
+  .financiamento-left h2{
+    font-size:2rem;
+  }
+
+  .financiamento-logo img{
+    max-width:210px;
+  }
 
   .fase-card{
     padding:18px;
-    gap:16px;
   }
 
   .fase-num{
     min-width:44px;
     height:44px;
-
-    font-size:1rem;
   }
 }
