@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "name": "dutra-engenharia-1",
+      "path": "../dutra-engenharia-1"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "dutra-engenharia"
+  }
+}

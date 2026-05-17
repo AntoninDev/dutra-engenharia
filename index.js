@@ -5,28 +5,39 @@ const overlay = document.getElementById("overlay");
 
 let menuOpen = false;
 
-menuBtn?.addEventListener("click", () => {
-  menuOpen = !menuOpen;
+function openMenu() {
+  menuOpen = true;
 
-  sidebar.classList.toggle("active");
-  overlay.classList.toggle("active");
+  sidebar.classList.add("active");
+  overlay.classList.add("active");
 
-  menuBtn.innerHTML = menuOpen
-    ? "✕"
-    : '<img src="media/icons/menu-bar.svg" alt="Menu">';
+  menuBtn.innerHTML = "✕";
+  menuBtn.setAttribute("aria-expanded", "true");
 
-  menuBtn.setAttribute("aria-expanded", String(menuOpen));
-});
+  document.body.classList.add("no-scroll");
+}
 
-overlay?.addEventListener("click", () => {
+function closeMenu() {
+  menuOpen = false;
+
   sidebar.classList.remove("active");
   overlay.classList.remove("active");
 
-  menuBtn.innerHTML = '<img src="media/icons/menu.svg" alt="Menu">';
+  menuBtn.innerHTML = '<img src="media/icons/menu-bar.svg" alt="Menu">';
   menuBtn.setAttribute("aria-expanded", "false");
 
-  menuOpen = false;
+  document.body.classList.remove("no-scroll");
+}
+
+menuBtn.addEventListener("click", () => {
+  if (menuOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
+
+overlay.addEventListener("click", closeMenu);
 
 // ===== MODAL (EXPANSÃO) =====
 const modal = document.getElementById("project-modal");
@@ -138,11 +149,7 @@ document.querySelectorAll(".portfolio-group[data-pager='2']").forEach((group) =>
     e.preventDefault();
 
     // fecha o menu do jeito que você já faz
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-    menuBtn.textContent = "☰";
-    menuBtn.setAttribute("aria-expanded", "false");
-    menuOpen = false;
+    closeMenu();
 
     const y = target.getBoundingClientRect().top + window.pageYOffset - headerH() - 10;
     window.scrollTo({ top: y, behavior: "smooth" });
