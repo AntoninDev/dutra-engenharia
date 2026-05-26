@@ -40,55 +40,109 @@ menuBtn.addEventListener("click", () => {
 overlay.addEventListener("click", closeMenu);
 
 // ===== MODAL (EXPANSÃO) =====
+
 const modal = document.getElementById("project-modal");
 const modalImg = document.getElementById("project-image");
 const modalClose = document.getElementById("project-close");
 
-function openProject(src) {
+const modalPrev = document.querySelector(".modal-prev");
+const modalNext = document.querySelector(".modal-next");
+
+const projectCards = Array.from(
+  document.querySelectorAll(".portfolio-card--click")
+);
+
+const projectImages = projectCards.map((card) =>
+  card.getAttribute("data-expand")
+);
+
+let currentProjectIndex = 0;
+
+function renderProject() {
+  modalImg.src = projectImages[currentProjectIndex];
+}
+
+function openProject(index) {
   if (!modal || !modalImg) return;
 
-  modalImg.src = src;
+  currentProjectIndex = index;
+
+  renderProject();
+
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
+
   document.body.classList.add("no-scroll");
 
   const content = modal.querySelector(".project-modal__content");
+
   if (content) content.scrollTop = 0;
 
   setTimeout(() => modalClose?.focus(), 0);
 }
 
 function closeProject() {
-  if (!modal || !modalImg) return;
-
   modal.classList.remove("active");
+
   modal.setAttribute("aria-hidden", "true");
+
   document.body.classList.remove("no-scroll");
+
   modalImg.src = "";
 }
+
+function nextProject() {
+  currentProjectIndex++;
+
+  if (currentProjectIndex >= projectImages.length) {
+    currentProjectIndex = 0;
+  }
+
+  renderProject();
+}
+
+function prevProject() {
+  currentProjectIndex--;
+
+  if (currentProjectIndex < 0) {
+    currentProjectIndex = projectImages.length - 1;
+  }
+
+  renderProject();
+}
+
+modalNext?.addEventListener("click", nextProject);
+modalPrev?.addEventListener("click", prevProject);
 
 modalClose?.addEventListener("click", closeProject);
 
 modal?.addEventListener("click", (e) => {
   const target = e.target;
-  if (target && target.matches("[data-close='true']")) closeProject();
+
+  if (target && target.matches("[data-close='true']")) {
+    closeProject();
+  }
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal?.classList.contains("active")) closeProject();
+  if (!modal?.classList.contains("active")) return;
+
+  if (e.key === "Escape") closeProject();
+
+  if (e.key === "ArrowRight") nextProject();
+
+  if (e.key === "ArrowLeft") prevProject();
 });
 
 // clique nos cards abre modal
-function bindCards(scope = document) {
-  scope.querySelectorAll(".portfolio-card--click").forEach((card) => {
-    card.addEventListener("click", () => {
-      const src = card.getAttribute("data-expand");
-      if (!src) return;
-      openProject(src);
-    });
+
+projectCards.forEach((card, index) => {
+  card.addEventListener("click", () => {
+    openProject(index);
   });
-}
-bindCards(document);
+});
+
+
 
 // ===== PAGINAÇÃO: 2 CARDS POR VEZ (page 0, page 1, ...) =====
 document.querySelectorAll(".portfolio-group[data-pager='2']").forEach((group) => {

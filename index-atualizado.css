@@ -1,0 +1,453 @@
+
+@font-face {
+  font-family: "FonteTitulos";
+  src: url("fonts/fonte-titulos.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FonteTextos";
+  src: url("fonts/fonte-texto.otf") format("opentype");
+}
+
+:root {
+  --bg: #050505;
+  --bg-sec: #101010;
+  --card: #151515;
+  --text: #f2f2f2;
+  --muted: #b8b8b8;
+  --border: rgba(255,255,255,.08);
+  --brand: #00bfff;
+
+  --header-h: 70px;
+  --container: 1200px;
+  --radius: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "FonteTextos", Arial, sans-serif;
+  padding-top: var(--header-h);
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  font-family: "FonteTitulos", Arial, sans-serif;
+}
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  height: var(--header-h);
+  background: rgba(10,10,10,.95);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.header-container {
+  width: min(92%, var(--container));
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 56px;
+}
+
+.menu-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-btn img {
+  width: 26px;
+}
+
+.sidebar {
+  position: fixed;
+  top: var(--header-h);
+  left: -280px;
+  width: 280px;
+  height: calc(100vh - var(--header-h));
+  background: var(--bg-sec);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px;
+  gap: 18px;
+  transition: .3s;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.banner {
+  width: min(92%, var(--container));
+  margin: 20px auto 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: clamp(220px, 34vw, 380px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.sobre,
+.financiamento {
+  padding: 90px 20px;
+}
+
+.sobre-container,
+.financiamento-container {
+  width: min(100%, var(--container));
+  margin: auto;
+}
+
+.sobre-header {
+  margin-bottom: 50px;
+}
+
+.sobre-header h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.sobre-line {
+  width: 120px;
+  height: 4px;
+  border-radius: 999px;
+  margin-top: 18px;
+  background: linear-gradient(90deg, #00bfff, #0066ff);
+}
+
+.sobre-content {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+}
+
+.sobre-texto,
+.sobre-card,
+.info-box,
+.fase-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.sobre-texto {
+  padding: 36px;
+}
+
+.sobre-texto p {
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.sobre-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sobre-card {
+  padding: 26px;
+}
+
+.sobre-card h3 {
+  color: var(--brand);
+  margin-bottom: 10px;
+}
+
+.financiamento-container {
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.02)
+  );
+
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 42px;
+}
+
+.financiamento-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.financiamento-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.financiamento-tag {
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  font-size: .8rem;
+}
+
+.financiamento-logo {
+  max-width: 240px;
+}
+
+.financiamento-left h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.15;
+}
+
+.financiamento-desc {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.financiamento-beneficios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.beneficio-card,
+.info-box {
+  padding: 18px;
+}
+
+.beneficio-card {
+  display: flex;
+  gap: 12px;
+}
+
+.beneficio-card span {
+  color: var(--brand);
+  font-weight: bold;
+}
+
+.financiamento-right {
+  min-height: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(0,191,255,.2);
+}
+
+.financiamento-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.financiamento-extra {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  grid-column: 1 / -1;
+}
+
+.info-box h3 {
+  margin-bottom: 10px;
+  color: var(--brand);
+}
+
+.fases-wrapper {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 14px;
+}
+
+.fases-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.fase-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+
+.fase-num {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bfff, #0066ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2000;
+}
+
+.project-modal.active {
+  display: block;
+}
+
+.project-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+}
+
+.project-modal__panel {
+  position: relative;
+  width: min(92vw, 500px);
+  margin: 120px auto 0;
+  background: var(--bg-sec);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.project-modal__top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.project-modal__close {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+}
+
+.contact-box {
+  padding: 30px;
+}
+
+.contact-title {
+  margin-bottom: 24px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  margin-top: 12px;
+}
+
+.contact-btn img {
+  width: 22px;
+}
+
+.contact-btn.whatsapp {
+  background: #25d366;
+  color: #000;
+}
+
+.contact-btn.instagram {
+  background: #1b1b1b;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+
+  .sobre-content,
+  .financiamento-grid,
+  .financiamento-extra,
+  .financiamento-beneficios {
+    grid-template-columns: 1fr;
+  }
+
+  .financiamento-right {
+    min-height: 260px;
+  }
+
+  .financiamento-right img {
+    object-position: center center;
+  }
+
+  .financiamento-container {
+    padding: 24px;
+  }
+
+  .sobre,
+  .financiamento {
+    padding: 70px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .banner img {
+    height: 220px;
+    object-position: center center;
+  }
+
+  .sobre-texto,
+  .sobre-card,
+  .beneficio-card,
+  .info-box,
+  .fase-card {
+    padding: 18px;
+  }
+
+  .fase-card {
+    grid-template-columns: 45px 1fr;
+  }
+
+  .fase-num {
+    width: 40px;
+    height: 40px;
+  }
+}
