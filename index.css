@@ -19,6 +19,11 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3 {
@@ -1345,8 +1350,8 @@ body.no-scroll {
 @media (min-width:1101px) {
 
   .financiamento-left h2{
-    max-width:34ch;
-    font-size:clamp(.95rem,1.4vw,1.25rem);
+    max-width:32ch;
+    font-size:clamp(1.15rem,1.65vw,1.55rem);
     line-height:1.35;
   }
 
@@ -1357,7 +1362,45 @@ body.no-scroll {
   }
 
   .fases-wrapper{
-    padding-top:36px;
+    width:100%;
+    padding:28px;
+    border-radius:24px;
+    background:linear-gradient(
+      145deg,
+      rgba(0,191,255,.075),
+      rgba(255,255,255,.035)
+    );
+    border:1px solid rgba(0,191,255,.16);
+  }
+
+  .fases-title{
+    margin-bottom:22px;
+    text-align:center;
+  }
+
+  .fases-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+  }
+
+  .fase-card{
+    grid-template-columns:1fr;
+    min-height:168px;
+    padding:20px;
+    gap:14px;
+  }
+
+  .fase-num{
+    width:44px;
+    height:44px;
+  }
+
+  .fase-content h4{
+    font-size:.98rem;
+  }
+
+  .fase-content p{
+    font-size:.88rem;
   }
 }
 

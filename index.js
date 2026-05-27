@@ -63,9 +63,35 @@ function getHeaderOffset() {
   return (header?.offsetHeight || 0) + 10;
 }
 
+function animateScrollTo(top) {
+  const start = window.scrollY;
+  const distance = top - start;
+  const duration = Math.min(900, Math.max(420, Math.abs(distance) * 0.45));
+  const startTime = performance.now();
+
+  function easeInOutCubic(progress) {
+    return progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+  }
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    window.scrollTo(0, start + distance * easeInOutCubic(progress));
+
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+}
+
 function scrollToTarget(target) {
   const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
-  window.scrollTo({ top, behavior: "smooth" });
+  animateScrollTo(top);
 }
 
 menuButton?.addEventListener("click", () => {
@@ -81,7 +107,7 @@ overlay?.addEventListener("click", closeMenu);
 document.querySelector(".logo-link")?.addEventListener("click", (event) => {
   event.preventDefault();
   closeMenu();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  animateScrollTo(0);
 });
 
 function setupProjectModal() {
@@ -253,7 +279,7 @@ function setupSidebarNavigation() {
     if (link.dataset.nav === "inicio") {
       event.preventDefault();
       closeMenu();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      animateScrollTo(0);
       return;
     }
 
