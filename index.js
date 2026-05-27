@@ -176,9 +176,20 @@ function setupProjectModal() {
   document.addEventListener("keydown", (event) => {
     if (!modal.classList.contains("active")) return;
 
-    if (event.key === "Escape") closeProject();
-    if (event.key === "ArrowRight") showNextProject();
-    if (event.key === "ArrowLeft") showPreviousProject();
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeProject();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showNextProject();
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPreviousProject();
+    }
   });
 
   window.projectModalControls = { closeProject };
