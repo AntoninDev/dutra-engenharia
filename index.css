@@ -211,75 +211,6 @@ body.no-scroll {
   object-position: center;
 }
 
-/* ===== TEXTO PRINCIPAL ===== */
-
-
-.ig-btn__icon img {
-  width: 18px;
-  height: 18px;
-  display: block;
-  object-fit: contain;
-}
-
-.ig-btn {
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--brand);
-  color: #0a0a0a;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-.ig-btn:hover {
-  background: var(--brand-hover);
-  transform: translateY(-1px);
-}
-
-.destaques {
-  width: 90%;
-  max-width: 900px;
-  margin: 18px auto 0;
-}
-.destaques-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  grid-template-rows: auto auto;
-  gap: 14px;
-}
-.media-slot {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  background: var(--preto-card);
-}
-.media-slot img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.media-slot--big {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  aspect-ratio: 1/1;
-}
-.media-slot--small {
-  grid-column: 2;
-  grid-row: 1;
-  aspect-ratio: 1/1;
-}
-.media-slot--rect {
-  grid-column: 2;
-  grid-row: 2;
-  aspect-ratio: 4/3;
-}
-
 .portfolio {
   width: 90%;
   max-width: 900px;
@@ -675,7 +606,6 @@ body.no-scroll {
 #portfolio,
 #quem-somos,
 #projetos-3d,
-#vistorias,
 #financiamento,
 #contato {
   scroll-margin-top: calc(var(--header-h) + 12px);
@@ -719,18 +649,11 @@ body.no-scroll {
     object-position: center center;
   }
 
-  .destaques {
-    width: 92%;
-    max-width: 980px;
-  }
   .portfolio {
     width: 92%;
     max-width: 980px;
   }
 
-  .destaques-grid {
-    gap: 16px;
-  }
   .page {
     gap: 16px;
   }
@@ -745,10 +668,6 @@ body.no-scroll {
 
   .header-container {
     width: 88%;
-  }
-  .destaques {
-    width: 88%;
-    max-width: 1100px;
   }
   .portfolio {
     width: 88%;
@@ -798,7 +717,6 @@ body.no-scroll {
     max-width: 1280px;
   }
   .banner,
-  .destaques,
   .portfolio {
     max-width: 1180px;
   }
@@ -944,7 +862,7 @@ body.no-scroll {
 
 .financiamento-container{
   width:100%;
-  max-width:1200px;
+  max-width:1280px;
   margin:0 auto;
   background:linear-gradient(
     145deg,
@@ -959,9 +877,9 @@ body.no-scroll {
 
 .financiamento-content{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:start;
+  grid-template-columns:minmax(320px,.86fr) minmax(560px,1.14fr);
+  gap:42px;
+  align-items:stretch;
 }
 
 /* COLUNA ESQUERDA */
@@ -970,6 +888,7 @@ body.no-scroll {
   display:flex;
   flex-direction:column;
   gap:24px;
+  justify-content:center;
 }
 
 .financiamento-tag{
@@ -1048,8 +967,7 @@ body.no-scroll {
 /* FASES */
 
 .fases-wrapper{
-  margin-top:20px;
-
+  height:100%;
 }
 
 .fases-title{
@@ -1058,16 +976,21 @@ body.no-scroll {
   color:#fff;
 }
 
+.fases-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
 .fase-card{
   display:grid;
-  grid-template-columns:60px 1fr;
-  gap:20px;
+  grid-template-columns:46px 1fr;
+  gap:14px;
   align-items:start;
-  padding:20px;
+  padding:18px;
   border-radius:14px;
   background: rgba(255,255,255,0.055);
   border:1px solid rgba(255,255,255,0.06);
-  margin-bottom:14px;
   transition:.3s;
 }
 
@@ -1077,28 +1000,28 @@ body.no-scroll {
 }
 
 .fase-num{
-  width:50px;
-  height:50px;
+  width:42px;
+  height:42px;
   border-radius:50%;
   background:linear-gradient(135deg,#00bfff,#0066ff);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.3rem;
+  font-size:1.08rem;
   font-weight:bold;
   color:#fff;
   flex-shrink:0;
 }
 
 .fase-content h4{
-  font-size:1rem;
-  margin-bottom:8px;
+  font-size:.96rem;
+  margin-bottom:6px;
   color:#fff;
 }
 
 .fase-content p{
-  font-size:.9rem;
-  line-height:1.6;
+  font-size:.86rem;
+  line-height:1.55;
   color:#d0d0d0;
 }
 
@@ -1127,7 +1050,9 @@ body.no-scroll {
   }
 
   .financiamento-left{
+    align-items:center;
     gap:20px;
+    text-align:center;
   }
 
   .financiamento-left h2{
@@ -1141,10 +1066,17 @@ body.no-scroll {
   .financiamento-tag{
     font-size:.75rem;
     padding:6px 12px;
+    align-self:center;
+  }
+
+  .financiamento-logo{
+    margin:0 auto;
   }
 
   .financiamento-beneficios{
+    width:100%;
     gap:10px;
+    text-align:left;
   }
 
   .beneficio-card{
@@ -1164,6 +1096,11 @@ body.no-scroll {
   .fases-title{
     font-size:1.2rem;
     margin-bottom:16px;
+    text-align:center;
+  }
+
+  .fases-grid{
+    grid-template-columns:1fr;
   }
 
   .fase-card{
@@ -1295,6 +1232,10 @@ body.no-scroll {
   .financiamento-content{
     grid-template-columns:1fr;
     gap:50px;
+  }
+
+  .fases-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .financiamento-container{
