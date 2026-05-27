@@ -5,8 +5,6 @@ const SELECTORS = {
   projectModal: "#project-modal",
   projectImage: "#project-image",
   projectClose: "#project-close",
-  contactModal: "#contact-modal",
-  contactClose: "#contact-close",
 };
 
 const menuButton = document.querySelector(SELECTORS.menuButton);
@@ -292,53 +290,6 @@ function setupProjectModal() {
   window.projectModalControls = { closeProject };
 }
 
-function setupContactModal() {
-  const contactModal = document.querySelector(SELECTORS.contactModal);
-  const contactClose = document.querySelector(SELECTORS.contactClose);
-  if (!contactModal) return;
-
-  function openContact() {
-    contactModal.classList.add("active");
-    contactModal.setAttribute("aria-hidden", "false");
-    lockPageScroll();
-
-    const content = contactModal.querySelector(".project-modal__content");
-    if (content) content.scrollTop = 0;
-
-    window.setTimeout(() => contactClose?.focus(), 0);
-  }
-
-  function closeContact() {
-    contactModal.classList.remove("active");
-    contactModal.setAttribute("aria-hidden", "true");
-    unlockPageScroll();
-  }
-
-  contactClose?.addEventListener("click", closeContact);
-
-  contactModal.addEventListener("click", (event) => {
-    if (event.target?.matches("[data-contact-close='true']")) {
-      closeContact();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && contactModal.classList.contains("active")) {
-      closeContact();
-    }
-  });
-
-  sidebar?.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-    if (link?.dataset.nav !== "contato") return;
-
-    event.preventDefault();
-    closeMenu();
-    window.projectModalControls?.closeProject?.();
-    openContact();
-  });
-}
-
 function setupPortfolioPagers() {
   document.querySelectorAll("#projetos-3d[data-pager='2']").forEach((group) => {
     const pages = Array.from(group.querySelectorAll(".page"));
@@ -395,8 +346,6 @@ function setupSidebarNavigation() {
       return;
     }
 
-    if (link.dataset.nav === "contato") return;
-
     const href = link.getAttribute("href") || "";
     if (!href.startsWith("#")) return;
 
@@ -410,6 +359,5 @@ function setupSidebarNavigation() {
 }
 
 setupProjectModal();
-setupContactModal();
 setupPortfolioPagers();
 setupSidebarNavigation();
