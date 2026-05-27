@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dutra Engenharia: projetos, vistorias e soluções para construção civil com financiamento pela Caixa Econômica Federal."
+    />
     <link rel="stylesheet" href="index.css" />
-    <link rel="icon" type="image/jpeg" href="media/icons/logo.png" />
-    <title>DUTRA ENGENHARIA</title>
+    <link rel="icon" type="image/png" href="media/icons/logo.png" />
+    <title>Dutra Engenharia</title>
   </head>
+
   <body>
     <header class="header">
       <div class="header-container">
-        <img src="media/icons/logo.png" alt="Logo da gráfica" class="logo" />
+        <a href="#" class="logo-link" aria-label="Ir para o início">
+          <img src="media/icons/logo.png" alt="Dutra Engenharia" class="logo" />
+        </a>
+
         <button
           class="menu-btn"
           id="menu-btn"
+          type="button"
           aria-label="Abrir menu"
           aria-expanded="false"
+          aria-controls="sidebar"
         >
           <img src="media/icons/menu-bar.svg" alt="" />
         </button>
       </div>
     </header>
 
-    <nav class="sidebar" id="sidebar" aria-label="Menu">
+    <nav class="sidebar" id="sidebar" aria-label="Menu principal">
       <a href="#" data-nav="inicio">Início</a>
       <a href="#quem-somos">Quem somos nós</a>
       <a href="#projetos-3d">Projetos 3D</a>
@@ -31,415 +41,330 @@
       <a href="#contato" data-nav="contato">Contato</a>
     </nav>
 
-    <div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-    <section class="banner">
-      <img src="media/banner.jpeg" alt="Banner fr studio" />
-    </section>
-    <section class="sobre">
-      <div class="sobre-container">
-        <div class="sobre-header">
-          <h2 id="quem-somos">Quem somos nós?</h2>
+    <main>
+      <section class="banner" aria-label="Dutra Engenharia">
+        <img src="media/banner.jpeg" alt="Banner da Dutra Engenharia" />
+      </section>
 
-          <div class="sobre-line"></div>
-        </div>
-
-        <div class="sobre-content">
-          <div class="sobre-texto">
-            <p>
-              Somos uma empresa completa com soluções seguras e econômicas no
-              ramo da construção civil, contando com uma equipe capacitada para
-              executar diversas atividades do setor com excelência,
-              transparência e seriedade, buscando sempre a satisfação total dos
-              nossos clientes.
-            </p>
+      <section class="sobre" id="quem-somos">
+        <div class="sobre-container">
+          <div class="sobre-header">
+            <h1>Quem somos nós?</h1>
+            <div class="section-line" aria-hidden="true"></div>
           </div>
 
-          <div class="sobre-cards">
-            <div class="sobre-card">
-              <h3>MISSÃO</h3>
+          <div class="sobre-content">
+            <div class="sobre-texto">
               <p>
-                Levar as melhores soluções na execução dos serviços prestados.
+                Somos uma empresa completa com soluções seguras e econômicas no
+                ramo da construção civil, contando com uma equipe capacitada para
+                executar diversas atividades do setor com excelência,
+                transparência e seriedade, buscando sempre a satisfação total dos
+                nossos clientes.
               </p>
             </div>
 
-            <div class="sobre-card">
-              <h3>VISÃO</h3>
-              <p>Ser referência na prestação de serviços.</p>
+            <div class="sobre-cards" aria-label="Missão, visão e valores">
+              <article class="sobre-card">
+                <h2>Missão</h2>
+                <p>Levar as melhores soluções na execução dos serviços prestados.</p>
+              </article>
+
+              <article class="sobre-card">
+                <h2>Visão</h2>
+                <p>Ser referência na prestação de serviços.</p>
+              </article>
+
+              <article class="sobre-card">
+                <h2>Valores</h2>
+                <p>Família, ética, transparência, determinação e comprometimento.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="destaques" aria-label="Destaques">
+        <div class="destaques-grid">
+          <div class="media-slot media-slot--big">
+            <img src="media/projetos_3d/placa.jpg" alt="Placa de obra" />
+          </div>
+          <div class="media-slot media-slot--small">
+            <img src="media/projetos_3d/pj-01.jpg" alt="Projeto residencial em 3D" />
+          </div>
+          <div class="media-slot media-slot--rect">
+            <img src="media/projetos_3d/pj-02.jpg" alt="Projeto arquitetônico em 3D" />
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio" id="portfolio" aria-label="Portfólio">
+        <div class="portfolio-group" id="projetos-3d" data-pager="2">
+          <div class="group-head">
+            <h2 class="group-title">Projetos 3D</h2>
+
+            <div class="pager-controls pager-controls--top">
+              <button class="pager-btn pager-prev" type="button" aria-label="Voltar projetos">
+                ‹
+              </button>
+              <button class="pager-btn pager-next" type="button" aria-label="Avançar projetos">
+                ›
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-grid" aria-label="Projetos 3D">
+            <button class="pager-btn pager-btn--side pager-prev" type="button" aria-label="Voltar projetos">
+              ‹
+            </button>
+            <button class="pager-btn pager-btn--side pager-next" type="button" aria-label="Avançar projetos">
+              ›
+            </button>
+
+            <div class="page active">
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-01.jpg"
+                aria-label="Abrir projeto 1"
+              >
+                <img src="media/projetos_3d/pj-01.jpg" alt="Projeto 3D 1" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-02.jpg"
+                aria-label="Abrir projeto 2"
+              >
+                <img src="media/projetos_3d/pj-02.jpg" alt="Projeto 3D 2" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
             </div>
 
-            <div class="sobre-card">
-              <h3>VALORES</h3>
-              <p>
-                Família, ética, transparência, determinação e comprometimento.
+            <div class="page">
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-03.jpg"
+                aria-label="Abrir projeto 3"
+              >
+                <img src="media/projetos_3d/pj-03.jpg" alt="Projeto 3D 3" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-04.jpg"
+                aria-label="Abrir projeto 4"
+              >
+                <img src="media/projetos_3d/pj-04.jpg" alt="Projeto 3D 4" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+            </div>
+
+            <div class="page">
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-05.jpg"
+                aria-label="Abrir projeto 5"
+              >
+                <img src="media/projetos_3d/pj-05.jpg" alt="Projeto 3D 5" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-06.jpg"
+                aria-label="Abrir projeto 6"
+              >
+                <img src="media/projetos_3d/pj-06.jpg" alt="Projeto 3D 6" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+            </div>
+
+            <div class="page">
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/projetos_3d/pj-07.jpg"
+                aria-label="Abrir projeto 7"
+              >
+                <img src="media/projetos_3d/pj-07.jpg" alt="Projeto 3D 7" />
+                <span class="card-badge">Ver projeto</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-group" id="vistorias" data-pager="2">
+          <div class="group-head">
+            <h2 class="group-title">Vistorias</h2>
+
+            <div class="pager-controls pager-controls--top">
+              <button class="pager-btn pager-prev" type="button" aria-label="Voltar vistorias">
+                ‹
+              </button>
+              <button class="pager-btn pager-next" type="button" aria-label="Avançar vistorias">
+                ›
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-grid" aria-label="Vistorias">
+            <button class="pager-btn pager-btn--side pager-prev" type="button" aria-label="Voltar vistorias">
+              ‹
+            </button>
+            <button class="pager-btn pager-btn--side pager-next" type="button" aria-label="Avançar vistorias">
+              ›
+            </button>
+
+            <div class="page active">
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/teste.png"
+                aria-label="Abrir vistoria 1"
+              >
+                <img src="media/teste.png" alt="Vistoria 1" />
+                <span class="card-badge">Ver vistoria</span>
+              </button>
+
+              <button
+                class="portfolio-card portfolio-card--click"
+                type="button"
+                data-expand="media/teste2.png"
+                aria-label="Abrir vistoria 2"
+              >
+                <img src="media/teste2.png" alt="Vistoria 2" />
+                <span class="card-badge">Ver vistoria</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="financiamento" id="financiamento">
+        <div class="financiamento-container">
+          <div class="financiamento-content">
+            <div class="financiamento-left">
+              <span class="financiamento-tag">Financiamento de construção</span>
+
+              <div class="financiamento-logo">
+                <img src="media/caixa-economica-federal-1.svg" alt="Caixa Econômica Federal" />
+              </div>
+
+              <h2>Construa com financiamento pela Caixa Econômica Federal</h2>
+
+              <p class="financiamento-desc">
+                Transforme o sonho da casa própria em realidade com soluções
+                modernas, seguras e planejadas para sua família.
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- DESTAQUES -->
-    <section class="destaques" aria-label="Destaques">
-      <div class="destaques-grid">
-        <div class="media-slot media-slot--big">
-          <img src="media/icons/perfil.png" alt="Loja" />
-        </div>
-        <div class="media-slot media-slot--small">
-          <img src="media/icons/perfil.png" alt="Blusa personalizada" />
-        </div>
-        <div class="media-slot media-slot--rect">
-          <img src="media/icons/perfil.png" alt="Boné personalizado" />
-        </div>
-      </div>
-    </section>
 
-    <!-- PORTFÓLIO -->
-    <section class="portfolio" id="portfolio" aria-label="Portfólio">
-      <!-- ===== GRUPO 1 ===== -->
-      <div class="portfolio-group" id="projetos-3d" data-pager="2">
-        <div class="group-head">
-          <h3 class="group-title">Projetos 3D</h3>
+              <div class="financiamento-beneficios">
+                <div class="beneficio-card">
+                  <span aria-hidden="true">✓</span>
+                  <p>Composição de renda com até 3 pessoas.</p>
+                </div>
 
-          <div class="pager-controls pager-controls--top">
-            <button
-              class="pager-btn pager-prev"
-              type="button"
-              aria-label="Voltar projetos"
-            >
-              ‹
-            </button>
-            <button
-              class="pager-btn pager-next"
-              type="button"
-              aria-label="Avançar projetos"
-            >
-              ›
-            </button>
-          </div>
-        </div>
+                <div class="beneficio-card">
+                  <span aria-hidden="true">✓</span>
+                  <p>Financiamento em até 420 meses.</p>
+                </div>
 
-        <div class="portfolio-grid" aria-label="Projetos - Identidade Visual">
-          <button
-            class="pager-btn pager-btn--side pager-prev"
-            type="button"
-            aria-label="Voltar projetos"
-          >
-            ‹
-          </button>
-          <button
-            class="pager-btn pager-btn--side pager-next"
-            type="button"
-            aria-label="Avançar projetos"
-          >
-            ›
-          </button>
+                <div class="beneficio-card">
+                  <span aria-hidden="true">✓</span>
+                  <p>Escolha do terreno ideal para sua família.</p>
+                </div>
 
-          <div class="page active">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-01.jpg"
-              aria-label="Abrir projeto 1"
-            >
-              <img
-                src="media/projetos_3d/pj-01.jpg"
-                alt="Pojeto picanha do canal"
-              />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-02.jpg"
-              aria-label="Projeto tourcia"
-            >
-              <img src="media/projetos_3d/pj-02.jpg" alt="Projeto 2 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-          </div>
-
-          <div class="page">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-03.jpg"
-              aria-label="Abrir projeto 3"
-            >
-              <img src="media/projetos_3d/pj-03.jpg" alt="Projeto 3 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-04.jpg"
-              aria-label="Abrir projeto 4"
-            >
-              <img src="media/projetos_3d/pj-04.jpg" alt="Projeto 4 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-          </div>
-
-          <div class="page">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-05.jpg"
-              aria-label="Abrir projeto 5"
-            >
-              <img src="media/projetos_3d/pj-05.jpg" alt="Projeto 5 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-06.jpg"
-              aria-label="Abrir projeto 6"
-            >
-              <img src="media/projetos_3d/pj-06.jpg" alt="Projeto 6 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-          </div>
-
-          <div class="page">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/projetos_3d/pj-07.jpg"
-              aria-label="Abrir projeto 7"
-            >
-              <img src="media/projetos_3d/pj-07.jpg" alt="Projeto 7 (thumb)" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <!--
-                    <button class="portfolio-card portfolio-card--click" type="button"
-            data-expand="media/icons/perfil.png" aria-label="Abrir projeto 8">
-            <img src="media/icons/perfil.png" alt="Projeto 8 (thumb)" />
-            <span class="card-badge">Ver projeto</span>
-          </button>
-        -->
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== GRUPO 2 (exemplo) ===== -->
-      <div class="portfolio-group" data-pager="2">
-        <div class="group-head">
-          <h3 class="group-title" id="vistorias">Vistorias</h3>
-
-          <div class="pager-controls pager-controls--top">
-            <button
-              class="pager-btn pager-prev"
-              type="button"
-              aria-label="Voltar projetos"
-            >
-              ‹
-            </button>
-            <button
-              class="pager-btn pager-next"
-              type="button"
-              aria-label="Avançar projetos"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-
-        <div class="portfolio-grid" aria-label="Projetos - Impressos">
-          <button
-            class="pager-btn pager-btn--side pager-prev"
-            type="button"
-            aria-label="Voltar projetos"
-          >
-            ‹
-          </button>
-          <button
-            class="pager-btn pager-btn--side pager-next"
-            type="button"
-            aria-label="Avançar projetos"
-          >
-            ›
-          </button>
-
-          <div class="page active">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/img.jpeg"
-            >
-              <img src="media/icons/perfil.png" alt="Impressos 1" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/expand-picanha.jpg"
-            >
-              <img src="media/icons/perfil.png" alt="Impressos 2" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-          </div>
-
-          <div class="page">
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/expand-picanha.jpg"
-            >
-              <img src="media/icons/perfil.png" alt="Impressos 3" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-
-            <button
-              class="portfolio-card portfolio-card--click"
-              type="button"
-              data-expand="media/expand-picanha.jpg"
-            >
-              <img src="media/icons/perfil.png" alt="Impressos 4" />
-              <span class="card-badge">Ver projeto</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="financiamento">
-      <div class="financiamento-container" id="financiamento">
-        <div class="financiamento-content">
-          <div class="financiamento-left">
-            <span class="financiamento-tag"> FINANCIAMENTO DE CONSTRUÇÃO </span>
-
-            <div class="financiamento-logo">
-              <img src="media/caixa-economica-federal-1.svg" />
-            </div>
-
-            <h2>Construa com financiamento pela Caixa Econômica Federal</h2>
-
-            <p class="financiamento-desc">
-              Transforme o sonho da casa própria em realidade com soluções
-              modernas, seguras e planejadas para sua família.
-            </p>
-
-            <!-- BENEFÍCIOS -->
-            <div class="financiamento-beneficios">
-              <div class="beneficio-card">
-                <span>✓</span>
-                <p>Composição de renda com até 3 pessoas.</p>
-              </div>
-
-              <div class="beneficio-card">
-                <span>✓</span>
-                <p>Financiamento em até 420 meses.</p>
-              </div>
-
-              <div class="beneficio-card">
-                <span>✓</span>
-                <p>Escolha do terreno ideal para sua família.</p>
-              </div>
-
-              <div class="beneficio-card">
-                <span>✓</span>
-                <p>Projeto arquitetônico personalizado.</p>
+                <div class="beneficio-card">
+                  <span aria-hidden="true">✓</span>
+                  <p>Projeto arquitetônico personalizado.</p>
+                </div>
               </div>
             </div>
 
-            <!-- ETAPAS -->
-          </div>
-          <div class="financiamento-rigth">
-            <div class="fases-wrapper">
-              <h3 class="fases-title">Fases para construção</h3>
+            <div class="financiamento-right">
+              <div class="fases-wrapper">
+                <h3 class="fases-title">Fases para construção</h3>
 
-              <div class="fase-card">
-                <div class="fase-num">1</div>
+                <article class="fase-card">
+                  <div class="fase-num">1</div>
+                  <div class="fase-content">
+                    <h4>Simulação e aprovação de crédito</h4>
+                    <p>
+                      Realizamos uma análise inicial para definir parcelas
+                      adequadas à realidade financeira da sua família.
+                    </p>
+                  </div>
+                </article>
 
-                <div class="fase-content">
-                  <h4>Simulação e aprovação de crédito</h4>
+                <article class="fase-card">
+                  <div class="fase-num">2</div>
+                  <div class="fase-content">
+                    <h4>Escolha do terreno</h4>
+                    <p>Auxiliamos na escolha do terreno ideal para construção da sua nova casa.</p>
+                  </div>
+                </article>
 
-                  <p>
-                    Realizamos uma análise inicial para definir parcelas
-                    adequadas à realidade financeira da sua família.
-                  </p>
-                </div>
-              </div>
+                <article class="fase-card">
+                  <div class="fase-num">3</div>
+                  <div class="fase-content">
+                    <h4>Desenvolvimento dos projetos</h4>
+                    <p>Criação dos projetos personalizados conforme as necessidades da família.</p>
+                  </div>
+                </article>
 
-              <div class="fase-card">
-                <div class="fase-num">2</div>
+                <article class="fase-card">
+                  <div class="fase-num">4</div>
+                  <div class="fase-content">
+                    <h4>Início da construção</h4>
+                    <p>Após aprovação e documentação, iniciamos a execução da obra.</p>
+                  </div>
+                </article>
 
-                <div class="fase-content">
-                  <h4>Escolha do terreno</h4>
+                <article class="fase-card">
+                  <div class="fase-num">5</div>
+                  <div class="fase-content">
+                    <h4>Regularização documental</h4>
+                    <p>Emissão de documentos e certidões necessárias para legalização.</p>
+                  </div>
+                </article>
 
-                  <p>
-                    Auxiliamos na escolha do terreno ideal para construção da
-                    sua nova casa.
-                  </p>
-                </div>
-              </div>
-
-              <div class="fase-card">
-                <div class="fase-num">3</div>
-
-                <div class="fase-content">
-                  <h4>Desenvolvimento dos projetos</h4>
-
-                  <p>
-                    Criação dos projetos personalizados conforme as necessidades
-                    da família.
-                  </p>
-                </div>
-              </div>
-
-              <div class="fase-card">
-                <div class="fase-num">4</div>
-
-                <div class="fase-content">
-                  <h4>Início da construção</h4>
-
-                  <p>
-                    Após aprovação e documentação, iniciamos a execução da obra.
-                  </p>
-                </div>
-              </div>
-
-              <div class="fase-card">
-                <div class="fase-num">5</div>
-
-                <div class="fase-content">
-                  <h4>Regularização documental</h4>
-
-                  <p>
-                    Emissão de documentos e certidões necessárias para
-                    legalização.
-                  </p>
-                </div>
-              </div>
-
-              <div class="fase-card">
-                <div class="fase-num">6</div>
-
-                <div class="fase-content">
-                  <h4>Entrega das chaves</h4>
-
-                  <p>
-                    Sua casa pronta, regularizada e preparada para novos
-                    momentos em família.
-                  </p>
-                </div>
+                <article class="fase-card">
+                  <div class="fase-num">6</div>
+                  <div class="fase-content">
+                    <h4>Entrega das chaves</h4>
+                    <p>Sua casa pronta, regularizada e preparada para novos momentos em família.</p>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- MODAL CONTATO (estrutura igual ao modal de projeto) -->
+      </section>
+
+      <section class="bottom-strip" aria-label="Mensagem final">
+        <p>
+          “Agradecemos a sua preferência e confiança no nosso trabalho, você é o
+          nosso maior foco, será sempre um prazer lhe servir.”
+        </p>
+      </section>
+    </main>
+
     <div
       class="project-modal"
       id="contact-modal"
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="contact-title"
     >
       <div class="project-modal__backdrop" data-contact-close="true"></div>
 
@@ -451,34 +376,32 @@
             id="contact-close"
             aria-label="Fechar contato"
           >
-            ✕
+            ×
           </button>
         </div>
 
         <div class="project-modal__content">
           <div class="contact-box">
-            <h3 class="contact-title">Contato</h3>
-            <p class="contact-subtitle">
-              Chama no WhatsApp ou fala com a gente no Instagram.
-            </p>
+            <h2 class="contact-title" id="contact-title">Contato</h2>
+            <p class="contact-subtitle">Chama no WhatsApp ou fala com a gente no Instagram.</p>
 
             <a
-              class="contact-whats contact-btn whatsapp"
-              href="https://wa.me/5522998694651?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
+              class="contact-btn whatsapp"
+              href="https://wa.me/5522998694651?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
               target="_blank"
               rel="noopener"
             >
-              <img src="media/icons/whatsapp.png" alt="WhatsApp" />
+              <img src="media/icons/whatsapp.png" alt="" />
               <span>+55 (22) 9 9869-4651</span>
             </a>
 
             <a
-              class="contact-ig contact-btn instagram"
+              class="contact-btn instagram"
               href="https://www.instagram.com/eng_magnosdutra/"
               target="_blank"
               rel="noopener"
             >
-              <img src="media/icons/instagram.png" alt="Instagram" />
+              <img src="media/icons/instagram.png" alt="" />
               <span>@eng_magnosdutra</span>
             </a>
           </div>
@@ -486,27 +409,20 @@
       </div>
     </div>
 
-    <!-- ÂNCORA DE CONTATO (pra não quebrar o dfds link do menu) -->
     <div id="contato"></div>
 
-    <section class="bottom-strip" aria-label="Mensagem final">
-      <p>
-        “Agradecemos a sua preferência e confiança no nosso trabalho, você é o
-        nosso maior foco, será sempre um prazer lhe servir.”
-      </p>
-    </section>
     <a
       href="https://www.instagram.com/eng_magnosdutra/"
       class="instagram-float"
       target="_blank"
       rel="noopener"
-      aria-label="Falar no WhatsApp"
+      aria-label="Abrir Instagram"
     >
       <img src="media/icons/instagram.png" alt="" />
     </a>
 
     <a
-      href="https://wa.me/5522998694651?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
+      href="https://wa.me/5522998694651?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
       class="whatsapp-float"
       target="_blank"
       rel="noopener"
@@ -515,32 +431,25 @@
       <img src="media/icons/whatsapp.png" alt="" />
     </a>
 
-    <!-- MODAL -->
     <div
       class="project-modal"
       id="project-modal"
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
+      aria-label="Projeto expandido"
     >
       <div class="project-modal__backdrop" data-close="true"></div>
 
       <div class="project-modal__panel" role="document">
-        <div class="project-modal__panel" role="document"><button
-          class="modal-nav modal-prev"
-          type="button"
-          aria-label="Projeto anterior"
-        >
+        <button class="modal-nav modal-prev" type="button" aria-label="Projeto anterior">
           ‹
         </button>
 
-        <button
-          class="modal-nav modal-next"
-          type="button"
-          aria-label="Próximo projeto"
-        >
+        <button class="modal-nav modal-next" type="button" aria-label="Próximo projeto">
           ›
         </button>
+
         <div class="project-modal__top">
           <button
             class="project-modal__close"
@@ -548,16 +457,12 @@
             id="project-close"
             aria-label="Fechar projeto"
           >
-            ✕
+            ×
           </button>
         </div>
 
         <div class="project-modal__content">
-          <img
-            class="project-modal__image"
-            id="project-image"
-            alt="Projeto expandido"
-          />
+          <img class="project-modal__image" id="project-image" alt="Projeto expandido" />
         </div>
       </div>
     </div>
