@@ -66,32 +66,125 @@ function getHeaderOffset() {
 function animateScrollTo(top) {
   const start = window.scrollY;
   const distance = top - start;
-  const duration = Math.min(900, Math.max(420, Math.abs(distance) * 0.45));
+  if (Math.abs(distance) < 1) return;
+
+  const duration = Math.min(760, Math.max(300, Math.abs(distance) * 0.35));
   const startTime = performance.now();
 
-  function easeInOutCubic(progress) {
-    return progress < 0.5
-      ? 4 * progress * progress * progress
-      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+  function easeOutCubic(progress) {
+    return 1 - Math.pow(1 - progress, 3);
   }
 
   function step(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
 
-    window.scrollTo(0, start + distance * easeInOutCubic(progress));
+    window.scrollTo(0, start + distance * easeOutCubic(progress));
 
     if (progress < 1) {
       window.requestAnimationFrame(step);
     }
   }
 
-  window.requestAnimationFrame(step);
+  window.scrollTo(0, start + distance * 0.08);
+  step(startTime + 16);
 }
 
 function scrollToTarget(target) {
   const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
   animateScrollTo(top);
+}
+
+function setupHorizontalSwipe(element, onSwipeLeft, onSwipeRight) {
+  if (!element) return;
+
+  const minDistance = 45;
+  const maxVerticalDrift = 70;
+  let startX = 0;
+  let startY = 0;
+  let pointerId = null;
+  let didSwipe = false;
+
+  element.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    startX = event.clientX;
+    startY = event.clientY;
+    pointerId = event.pointerId;
+    didSwipe = false;
+  });
+
+  element.addEventListener("pointerup", (event) => {
+    if (pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - startX;
+    const deltaY = event.clientY - startY;
+    pointerId = null;
+
+    if (Math.abs(deltaX) < minDistance || Math.abs(deltaY) > maxVerticalDrift) return;
+
+    didSwipe = true;
+    event.preventDefault();
+
+    if (deltaX < 0) {
+      onSwipeLeft();
+    } else {
+      onSwipeRight();
+    }
+  });
+
+  element.addEventListener("pointercancel", () => {
+    pointerId = null;
+  });
+
+  element.addEventListener(
+    "click",
+    (event) => {
+      if (!didSwipe) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      didSwipe = false;
+    },
+    true
+  );
+}
+
+function setupMobileSwipeDown(element, onSwipeDown) {
+  if (!element) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const minDistance = 65;
+  const maxHorizontalDrift = 85;
+  let startX = 0;
+  let startY = 0;
+  let pointerId = null;
+
+  element.addEventListener("pointerdown", (event) => {
+    if (!mobileQuery.matches) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    startX = event.clientX;
+    startY = event.clientY;
+    pointerId = event.pointerId;
+  });
+
+  element.addEventListener("pointerup", (event) => {
+    if (!mobileQuery.matches || pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - startX;
+    const deltaY = event.clientY - startY;
+    pointerId = null;
+
+    if (deltaY < minDistance || Math.abs(deltaX) > maxHorizontalDrift) return;
+
+    event.preventDefault();
+    onSwipeDown();
+  });
+
+  element.addEventListener("pointercancel", () => {
+    pointerId = null;
+  });
 }
 
 menuButton?.addEventListener("click", () => {
@@ -166,6 +259,10 @@ function setupProjectModal() {
   modalNext?.addEventListener("click", showNextProject);
   modalPrev?.addEventListener("click", showPreviousProject);
   modalClose?.addEventListener("click", closeProject);
+
+  const modalContent = modal.querySelector(".project-modal__content");
+  setupHorizontalSwipe(modalContent, showNextProject, showPreviousProject);
+  setupMobileSwipeDown(modalContent, closeProject);
 
   modal.addEventListener("click", (event) => {
     if (event.target?.matches("[data-close='true']")) {
@@ -243,10 +340,11 @@ function setupContactModal() {
 }
 
 function setupPortfolioPagers() {
-  document.querySelectorAll(".portfolio-group[data-pager='2']").forEach((group) => {
+  document.querySelectorAll("#projetos-3d[data-pager='2']").forEach((group) => {
     const pages = Array.from(group.querySelectorAll(".page"));
     const prevButtons = Array.from(group.querySelectorAll(".pager-prev"));
     const nextButtons = Array.from(group.querySelectorAll(".pager-next"));
+    const grid = group.querySelector(".portfolio-grid");
 
     if (pages.length === 0) return;
 
@@ -257,27 +355,30 @@ function setupPortfolioPagers() {
         page.classList.toggle("active", index === currentPage);
       });
 
-      const isFirstPage = currentPage === 0;
-      const isLastPage = currentPage === pages.length - 1;
+      const hasOnlyOnePage = pages.length === 1;
+      prevButtons.forEach((button) => button.classList.toggle("is-hidden", hasOnlyOnePage));
+      nextButtons.forEach((button) => button.classList.toggle("is-hidden", hasOnlyOnePage));
+    }
 
-      prevButtons.forEach((button) => button.classList.toggle("is-hidden", isFirstPage));
-      nextButtons.forEach((button) => button.classList.toggle("is-hidden", isLastPage));
+    function showPreviousPage() {
+      currentPage = (currentPage - 1 + pages.length) % pages.length;
+      render();
+    }
+
+    function showNextPage() {
+      currentPage = (currentPage + 1) % pages.length;
+      render();
     }
 
     prevButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        if (currentPage > 0) currentPage -= 1;
-        render();
-      });
+      button.addEventListener("click", showPreviousPage);
     });
 
     nextButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        if (currentPage < pages.length - 1) currentPage += 1;
-        render();
-      });
+      button.addEventListener("click", showNextPage);
     });
 
+    setupHorizontalSwipe(grid, showNextPage, showPreviousPage);
     render();
   });
 }

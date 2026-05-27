@@ -20,10 +20,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 h1,
 h2,
 h3 {
@@ -88,7 +84,7 @@ body.no-scroll {
 
   display: flex;
   align-items: center;
-  z-index: 4000;
+  z-index: 7000;
 
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -122,7 +118,7 @@ body.no-scroll {
 }
 
 .menu-btn {
-  z-index: 5000;
+  z-index: 7200;
   touch-action: manipulation;
   position: absolute;
   right: 15px;
@@ -163,7 +159,7 @@ body.no-scroll {
   gap: 20px;
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 1100;
+  z-index: 6900;
   border-right: 1px solid var(--cinza-borda);
 }
 .sidebar a {
@@ -185,7 +181,7 @@ body.no-scroll {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 1050;
+  z-index: 6800;
 }
 .overlay.active {
   opacity: 1;
@@ -342,6 +338,7 @@ body.no-scroll {
 .portfolio-grid {
   position: relative;
   padding: 0 56px;
+  touch-action: pan-y;
 }
 
 .portfolio-grid .page {
@@ -451,19 +448,11 @@ body.no-scroll {
     border-radius: 16px;
   }
   .pager-btn--side {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 25px;
   }
 
-  #project-modal .project-modal__content {
-    padding: 14px 50px;
-  }
-
-  #project-modal .project-modal__close {
-    width: 36px;
-    height: 36px;
-  }
 }
 
 /* ===== MODAL ===== */
@@ -567,6 +556,7 @@ body.no-scroll {
   place-items: center;
   overflow: hidden;
   padding: 18px 76px;
+  touch-action: pan-y;
 }
 
 #project-modal .project-modal__image {
@@ -1166,6 +1156,7 @@ body.no-scroll {
   .financiamento-container{
     padding:30px 20px;
     border-radius:24px;
+    backdrop-filter:none;
   }
 
   .financiamento-content{
@@ -1207,6 +1198,7 @@ body.no-scroll {
     padding:12px;
     gap:12px;
     font-size:.9rem;
+    transition:none;
   }
 
   .beneficio-card span{
@@ -1232,6 +1224,7 @@ body.no-scroll {
     gap:16px;
     padding:16px;
     margin-bottom:12px;
+    transition:none;
   }
 
   .fase-num{
@@ -1266,6 +1259,7 @@ body.no-scroll {
   .financiamento-container{
     padding:24px 16px;
     border-radius:20px;
+    backdrop-filter:none;
   }
 
   .financiamento-content{
@@ -1523,4 +1517,55 @@ body.no-scroll {
 
 .modal-next {
   right: 20px;
+}
+
+@media (max-width: 768px) {
+  #project-modal .project-modal__panel {
+    width: 100vw;
+    height: calc(100dvh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    margin: var(--header-h) 0 0;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  #project-modal .project-modal__content {
+    padding: 8px;
+    touch-action: none;
+  }
+
+  #project-modal .project-modal__image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+  }
+
+  #project-modal .project-modal__top {
+    top: 8px;
+    right: 8px;
+  }
+
+  #project-modal .project-modal__close,
+  .modal-nav {
+    width: 45px;
+    height: 45px;
+  }
+
+  #project-modal .project-modal__close {
+    font-size: 21px;
+  }
+
+  .modal-nav {
+    font-size: 30px;
+    opacity: .55;
+  }
+
+  .modal-prev {
+    left: 8px;
+  }
+
+  .modal-next {
+    right: 8px;
+  }
 }
