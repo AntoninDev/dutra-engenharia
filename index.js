@@ -57,6 +57,10 @@ function closeMenu() {
   unlockPageScroll();
 }
 
+function closeActiveProjectModal() {
+  window.projectModalControls?.closeProject?.();
+}
+
 function getHeaderOffset() {
   return (header?.offsetHeight || 0) + 10;
 }
@@ -197,6 +201,7 @@ overlay?.addEventListener("click", closeMenu);
 
 document.querySelector(".logo-link")?.addEventListener("click", (event) => {
   event.preventDefault();
+  closeActiveProjectModal();
   closeMenu();
   animateScrollTo(0);
 });
@@ -218,6 +223,11 @@ function setupProjectModal() {
 
   function renderProject() {
     modalImage.src = projectImages[currentIndex];
+    const content = modal.querySelector(".project-modal__content");
+    if (content) {
+      content.scrollTop = 0;
+      content.scrollLeft = 0;
+    }
   }
 
   function openProject(index) {
@@ -341,6 +351,7 @@ function setupSidebarNavigation() {
 
     if (link.dataset.nav === "inicio") {
       event.preventDefault();
+      closeActiveProjectModal();
       closeMenu();
       animateScrollTo(0);
       return;
@@ -353,6 +364,7 @@ function setupSidebarNavigation() {
     if (!target) return;
 
     event.preventDefault();
+    closeActiveProjectModal();
     closeMenu();
     scrollToTarget(target);
   });
